@@ -27,22 +27,15 @@ button{
   font-size: x-large;
   margin-right: 50px;
   background-color: rgb(117, 158, 192);
+  padding: 5px;
 
 }
-/* 
- #pbutton{
-  position: absolute;
-  left: 40px;
-  top: 40px;
-  background-color: rgb(163, 217, 233);
-
-}  */
 
 
 #a1{
   position: absolute;
-  left: 40px;
-  top: 40px;
+  left: 20px;
+  top: 20px;
   background-color: rgb(113, 198, 224);
   color: rgb(0, 0, 0);
   text-decoration: none;
@@ -57,3 +50,12 @@ padding:7px;
   flex-direction: column;
   width: 200px;
 }# sourceMappingURL=main.css.map */
+
+/* 
+ #pbutton{
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  background-color: rgb(163, 217, 233);
+
+}  */

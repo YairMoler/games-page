@@ -3,17 +3,17 @@ body {
     background-repeat:no-repeat;
     background-size: cover;
 }
-.general1 {
+/* .general1 {
     border: 2px white solid;
     height: 170px;
     background-color: black;
-    width: 200px; /* todo select width */
     display: inline-block;
     width: 100%;
     left: 0px;
     bottom: 0px;
-}
+} */
 
+/*one big div that contain all the small divs*/
 .game-floor-container {
     display: flex;
     align-items: flex-end;
@@ -21,9 +21,10 @@ body {
     height: 300px;
     position: absolute;
     bottom: 0;
+    left: 0;
 }
 
-
+ /*build the race with array of divs */
 .div0 {
     border: 2px black solid;
     height: 250px;
@@ -49,4 +50,12 @@ body {
     flex-wrap: nowrap;
 } 
 
-
+#a2{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background-color: rgb(156, 223, 243);
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  padding:7px;
+  } 
