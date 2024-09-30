@@ -14,7 +14,9 @@ const handleChangePassword = (event) => {
 };
 
 const onSubmit = () => {
+    /*chacking if the username already log in*/
     if (validate(username, "usernames") == -1 && validate(password, "passwords") == -1) {
+        /* creat new username */
         newItem(username, "usernames");
         newItem(password, "passwords");
     } else {
