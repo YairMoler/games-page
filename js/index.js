@@ -1,23 +1,23 @@
-let password;
-
-document
-    .getElementById("username")
-    .addEventListener("change", (event) => handleChangeUsername(event));
-
-document
-    .getElementById("password")
-    .addEventListener("change", (event) => handleChangePassword(event));
-
-const handleChangeUsername = (event) => {
-    username = event.target.value;
+let user = {
+    username: "",
+    password: "",
 };
 
-const handleChangePassword = (event) => {
-    password = event.target.value;
+document.getElementById("username").addEventListener("change", (event) => handleChange(event));
+
+document.getElementById("password").addEventListener("change", (event) => handleChange(event));
+
+const handleChange = (event) => {
+    console.log("event.target.id: ", event.target.id);
+    user[event.target.id] = event.target.value;
+    console.log("username: ", user[event.target.id]);
 };
+
+// const handleChangePassword = (event) => {
+//     password = event.target.value;
+// };
 const onSubmit = () => {
-    console.log(validate(username, "usernames"));
-    console.log("username: ", username);
-    console.log(validate(password, "passwords"));
-    console.log("pasword: ", password);
+    if (logIn(user.username, user.password)) {
+        window.location = "./html/picture_of_games.html";
+    }
 };
