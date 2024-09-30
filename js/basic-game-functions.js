@@ -16,17 +16,6 @@ const touchingLeft = (entity1, entity2) => {
     return entity1.x >= entity2.x && entity1.x <= entity2.x + entity2.width && entity1.y < entity2.y + entity2.height;
 };
 const touchingBottom = (entity1, entity2) => {
-    console.log(entity1);
-    console.log(entity2);
-    console.log("entity1.x + entity1.width >= entity2.x: ", entity1.x + entity1.width >= entity2.x);
-    console.log("entity2.x: ", entity2.x);
-    console.log("entity1.x + entity1.width: ", entity1.x + entity1.width);
-    console.log("entity1.x + entity1.width <= entity2.x + entity2.width: ", entity1.x + entity1.width <= entity2.x + entity2.width);
-    console.log("entity2.x + entity2.width: ", entity2.x + entity2.width);
-    console.log("entity1.x + entity1.width: ", entity1.x + entity1.width);
-    console.log("entity1.y < entity2.y + entity2.height: ", entity1.y <= entity2.y + entity2.height);
-    console.log("entity2.y + entity2.height: ", entity2.y + entity2.height);
-    console.log("entity1.y: ", entity1.y);
     return (
         entity1.x + entity1.width >= entity2.x && entity1.x + entity1.width <= entity2.x + entity2.width && entity1.y <= entity2.y + entity2.height
     );
@@ -69,7 +58,7 @@ const move = (entity, direction, amount = 0) => {
         entity.x -= amount;
         movingEntity.style.left = entity.x + "px";
     } else if (direction == "up") {
-        entity.y -= amount;
+        entity.y += amount;
         movingEntity.style.bottom = entity.y + "px";
     }
 };
@@ -86,18 +75,24 @@ const GRAVITY = -9.8;
 const STARTINGVELOCITY = 44.2718872;
 let velocity = STARTINGVELOCITY;
 
-const caculateJump = (velocity) => {
+let isJumping = false;
+const caculateJump = () => {
+    isJumping = true;
     move(player, "up", velocity);
-    velocity += GRAVITY / 20;
+    velocity += GRAVITY / 2;
+    console.log("velocity += GRAVITY / 20: ", (velocity += GRAVITY / 20));
     if (checkIfTouchFloor(player, wall)) {
         clearInterval(JumpTime);
         velocity = STARTINGVELOCITY;
+        isJumping = false;
     }
 };
 
+let JumpTime;
+
 const jump = () => {
     if (checkIfTouchFloor(player, wall)) {
-        const JumpTime = setInterval(() => caculateJump(velocity), 50);
+        JumpTime = setInterval(() => caculateJump(), 50);
     }
 };
 
