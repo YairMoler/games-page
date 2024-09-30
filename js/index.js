@@ -16,8 +16,7 @@ const handleChangePassword = (event) => {
     password = event.target.value;
 };
 const onSubmit = () => {
-    console.log(validate(username, "usernames"));
-    console.log("username: ", username);
-    console.log(validate(password, "passwords"));
-    console.log("pasword: ", password);
+    if (logIn(username, password)) {
+        window.location = "./html/picture_of_games.html";
+    }
 };
