@@ -1,0 +1,68 @@
+body {
+    background-image: url("../pictures/04b81513749c270dea95c1eebfd2beb8.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+.general1 {
+    border: 2px white solid;
+    height: 170px;
+    background-color: black;
+    width: 200px; /* todo select width */
+    display: inline-block;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+}
+
+.game-floor-container {
+    display: flex;
+    align-items: flex-end;
+    width: 100%; 
+    height: 300px;
+    position: absolute;
+    bottom: 0;
+    background-color: rgb(121, 157, 188);
+}
+
+/*
+div {
+    background-image: url("../pictures/grass.jpeg");
+    background-color: aquamarine;
+    height: 150px;
+    width: 100%; 
+    position: absolute; 
+    top:645px;
+    left: 0px;
+    bottom: 0px;
+}
+
+*/
+.div0 {
+    border: 2px black solid;
+    height: 150px;
+    width: 200px;   
+    background-image: url("../pictures/grass.jpeg");
+    display: flex;
+    flex-wrap: nowrap;
+    width:100px; 
+} 
+.div1 {
+    border: 2px black solid;
+    height: 50px;
+    width: 200px; 
+    background-image: url("../pictures/grass.jpeg");
+    display: flex;
+    flex-wrap: nowrap;
+    width:100px;   
+} 
+ .div2 {
+    border: 2px black solid;
+    height: 100px;
+    width: 200px;  
+    background-image: url("../pictures/grass.jpeg");
+    display: flex;
+    flex-wrap: nowrap;
+    width:100px;  
+} 
+
+

@@ -1,0 +1,25 @@
+body {
+    background-image: url("../pictures/04b81513749c270dea95c1eebfd2beb8.jpg");
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+.general2 {
+    border: 2px black solid;
+}
+
+.container2 {
+    /* display: flex; */
+    background-image: url("../pictures/grass.jpeg");
+    height: 50px;
+    width: 50px;
+}
+
+/* div {
+    background-image: url("../pictures/grass.jpeg");
+    height: 150px;
+    width: 100%; 
+    position: absolute; 
+    top:810px;
+    left: 0px;
+    bottom: 0px; 
+} */

@@ -1,5 +1,5 @@
 body{
-    background-color:rgb(162, 155, 155);
+    background-color:rgb(59, 193, 200);
     height:100vh;
 }
 
@@ -7,7 +7,7 @@ img{
     width:400px;
     height:400px;
     margin-top:25px;
-    border:10px #615e5f solid;
+    border:10px #43a8c9 solid;
 }
 
 .div-container{
@@ -16,3 +16,5 @@ img{
     width: 100%;
     flex-wrap: wrap;
 }
+
+
