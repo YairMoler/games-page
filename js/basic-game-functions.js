@@ -6,12 +6,36 @@ function Entity(elemnt) {
 }
 
 const player = new Entity("player");
+
 console.log(player);
-const player2 = new Entity("player2");
+console.log(wall);
+const touchingRight = (entity1, entity2) => {
+    return entity1.x + entity1.width >= entity2.x && entity1.x + entity1.width <= entity2.x + entity2.width && entity1.y < entity2.y + entity2.height;
+};
+const touchingLeft = (entity1, entity2) => {
+    return entity1.x >= entity2.x && entity1.x <= entity2.x + entity2.width && entity1.y < entity2.y + entity2.height;
+};
+const touchingBottom = (entity1, entity2) => {
+    return entity1.x + entity1.width >= entity2.x && entity1.x + entity1.width <= entity2.x + entity2.width && entity1.y < entity2.y + entity2.height;
+};
+
+const checkIftouchWalls = (entity, arr, direction) => {
+    for (let item in arr) {
+        if (direction == "right") {
+            if (touchingRight(entity, arr[item])) {
+                return true;
+            }
+        } else {
+            if (touchingLeft(entity, arr[item])) {
+                return true;
+            }
+        }
+    }
+    return false;
+};
 
 const move = (entity, direction, amount = 0) => {
     let movingEntity = document.getElementById("player");
-    console.log("movingEntity: ", movingEntity);
     if (direction == "right") {
         entity.x += amount;
         movingEntity.style.left = entity.x + "px";
@@ -34,40 +58,37 @@ document.addEventListener("keyup", (event) => (keysPressed[event.key] = false));
 
 const detectMovment = () => {
     if (keysPressed["ArrowRight"] == true) {
-        move(player, "right", 1);
+        if (!checkIftouchWalls(player, wall, "right")) {
+            move(player, "right", 5);
+        }
     } else if (keysPressed["ArrowLeft"] == true) {
-        move(player, "left", 1);
+        if (!(checkIftouchWalls(player, wall, "left") || player.x == 0)) {
+            move(player, "left", 5);
+        }
     }
+
     if (keysPressed["ArrowUP"] == true) {
         jump();
     }
 };
 
-const gravity = -9.8; //todo upper
-const startingVelocity = 44.2718872;
-let velocity = startingVelocity;
+const GRAVITY = -9.8;
+const STARTINGVELOCITY = 44.2718872;
+let velocity = STARTINGVELOCITY;
 
 const caculateJump = (velocity) => {
     move(player, "up", velocity);
-    velocity += gravity / 20;
-    if (touching(player, player2 || player.y == 0)) {
+    velocity += GRAVITY / 20;
+    if (touchingBottom(player, player2 || player.y == 0)) {
         clearInterval(JumpTime);
-        velocity = startingVelocity;
+        velocity = STARTINGVELOCITY;
     }
 };
 
 const jump = () => {
-    if (touching(player, player2 || player.y == 0)) {
+    if (touchingBottom(player, player2 || player.y == 0)) {
         const JumpTime = setInterval(() => caculateJump(velocity), 50);
     }
 };
 
 const constantChecking = setInterval(detectMovment, 50);
-
-const touching = (entity1, entity2) => {
-    if (entity1.x >= entity2.x && entity1.x <= entity2.x + entity2.width && entity1.y + entity1.height >= entity1.y + entity2.height) {
-        return true;
-    } else {
-        return false;
-    }
-};

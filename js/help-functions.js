@@ -3,7 +3,6 @@ const logIn = (username, password) => {
         return true;
     } else {
         return false;
-        // alert("username or password invalid");
     }
 };
 
@@ -20,14 +19,3 @@ const newItem = (str, storage) => {
     let intoStorage = JSON.stringify(retrieved);
     localStorage.setItem(storage, intoStorage);
 };
-
-// const getValue = (inputName) => {
-//     let valueName;
-//     document
-//         .getElementById(inputName)
-//         .addEventListener("change", (event) => handleChange(event));
-//     const handleChange = (event) => {
-//         valueName = event.target.value;
-//     };
-//     return valueName;
-// };
