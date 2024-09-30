@@ -19,9 +19,13 @@ const handleChangePassword = (event) => {
 
 const onSubmit = () => {
     if (!validate(username, "usernames") && !validate(password, "passwords")) {
+        console.log("in submit")
         newItem(username, "usernames");
         newItem(password, "passwords");
     } else {
         alert("username or password invalid");
     }
 };
+
+
+
