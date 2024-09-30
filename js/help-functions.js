@@ -1,8 +1,5 @@
 const logIn = (username, password) => {
-    if (
-        validate(username, "usernames") == validate(password, "passwords") &&
-        validate(username, "usernames") != -1
-    ) {
+    if (validate(username, "usernames") == validate(password, "passwords") && validate(username, "usernames") != -1) {
         return true;
     } else {
         return false;
