@@ -1,0 +1,18 @@
+body{
+    background-color:rgb(162, 155, 155);
+    height:100vh;
+}
+
+img{
+    width:400px;
+    height:400px;
+    margin-top:25px;
+    border:10px #615e5f solid;
+}
+
+.div-container{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    flex-wrap: wrap;
+}
