@@ -4,16 +4,14 @@
     margin: 0;
 }
 
-
 main {
  display: flex;
  align-items:center;
+ justify-content: center;
 }
-
 
 section{
     display: flex;
     flex-direction: column;
     width: 200px;
 }
-
