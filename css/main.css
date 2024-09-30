@@ -5,7 +5,7 @@
 }
 
 main {
-  border:7px grey solid;
+  border:7px rgb(97, 177, 199) solid;
   display: flex;
   align-items:center;
   justify-content: center;
