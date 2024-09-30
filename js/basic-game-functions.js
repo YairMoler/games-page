@@ -16,10 +16,24 @@ const touchingLeft = (entity1, entity2) => {
     return entity1.x >= entity2.x && entity1.x <= entity2.x + entity2.width && entity1.y < entity2.y + entity2.height;
 };
 const touchingBottom = (entity1, entity2) => {
-    return entity1.x + entity1.width >= entity2.x && entity1.x + entity1.width <= entity2.x + entity2.width && entity1.y < entity2.y + entity2.height;
+    console.log(entity1);
+    console.log(entity2);
+    console.log("entity1.x + entity1.width >= entity2.x: ", entity1.x + entity1.width >= entity2.x);
+    console.log("entity2.x: ", entity2.x);
+    console.log("entity1.x + entity1.width: ", entity1.x + entity1.width);
+    console.log("entity1.x + entity1.width <= entity2.x + entity2.width: ", entity1.x + entity1.width <= entity2.x + entity2.width);
+    console.log("entity2.x + entity2.width: ", entity2.x + entity2.width);
+    console.log("entity1.x + entity1.width: ", entity1.x + entity1.width);
+    console.log("entity1.y < entity2.y + entity2.height: ", entity1.y <= entity2.y + entity2.height);
+    console.log("entity2.y + entity2.height: ", entity2.y + entity2.height);
+    console.log("entity1.y: ", entity1.y);
+    return (
+        entity1.x + entity1.width >= entity2.x && entity1.x + entity1.width <= entity2.x + entity2.width && entity1.y <= entity2.y + entity2.height
+    );
 };
 
-const checkIftouchWalls = (entity, arr, direction) => {
+console.log(touchingBottom(player, wall[0]));
+const checkIfTouchWalls = (entity, arr, direction) => {
     for (let item in arr) {
         if (direction == "right") {
             if (touchingRight(entity, arr[item])) {
@@ -34,6 +48,18 @@ const checkIftouchWalls = (entity, arr, direction) => {
     return false;
 };
 
+const checkIfTouchFloor = (entity, arr) => {
+    for (let item in arr) {
+        console.log("item: ", item);
+
+        if (touchingBottom(entity, arr[item])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+};
+
 const move = (entity, direction, amount = 0) => {
     let movingEntity = document.getElementById("player");
     if (direction == "right") {
@@ -44,33 +70,17 @@ const move = (entity, direction, amount = 0) => {
         movingEntity.style.left = entity.x + "px";
     } else if (direction == "up") {
         entity.y -= amount;
-        movingEntity.style.left = entity.y + "px";
+        movingEntity.style.bottom = entity.y + "px";
     }
 };
 
 let keysPressed = {};
 
 document.addEventListener("keydown", (event) => {
-    keysPressed[event.key] = true;
-    console.log("keysPressed[event.key]: ", event.key);
+    keysPressed[event.code] = true;
+    console.log("keysPressed[event.code]: ", event.code);
 });
-document.addEventListener("keyup", (event) => (keysPressed[event.key] = false));
-
-const detectMovment = () => {
-    if (keysPressed["ArrowRight"] == true) {
-        if (!checkIftouchWalls(player, wall, "right")) {
-            move(player, "right", 5);
-        }
-    } else if (keysPressed["ArrowLeft"] == true) {
-        if (!(checkIftouchWalls(player, wall, "left") || player.x == 0)) {
-            move(player, "left", 5);
-        }
-    }
-
-    if (keysPressed["ArrowUP"] == true) {
-        jump();
-    }
-};
+document.addEventListener("keyup", (event) => (keysPressed[event.code] = false));
 
 const GRAVITY = -9.8;
 const STARTINGVELOCITY = 44.2718872;
@@ -79,15 +89,32 @@ let velocity = STARTINGVELOCITY;
 const caculateJump = (velocity) => {
     move(player, "up", velocity);
     velocity += GRAVITY / 20;
-    if (touchingBottom(player, player2 || player.y == 0)) {
+    if (checkIfTouchFloor(player, wall)) {
         clearInterval(JumpTime);
         velocity = STARTINGVELOCITY;
     }
 };
 
 const jump = () => {
-    if (touchingBottom(player, player2 || player.y == 0)) {
+    if (checkIfTouchFloor(player, wall)) {
         const JumpTime = setInterval(() => caculateJump(velocity), 50);
+    }
+};
+
+const detectMovment = () => {
+    if (keysPressed["ArrowRight"] == true) {
+        if (!checkIfTouchWalls(player, wall, "right")) {
+            move(player, "right", 5);
+        }
+    } else if (keysPressed["ArrowLeft"] == true) {
+        if (!(checkIfTouchWalls(player, wall, "left") || player.x == 0)) {
+            move(player, "left", 5);
+        }
+    }
+
+    console.log('keysPressed["ArrowUp"]: ', keysPressed["ArrowUP"]);
+    if (keysPressed["ArrowUp"] == true) {
+        jump();
     }
 };
 
