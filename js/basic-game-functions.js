@@ -1,6 +1,7 @@
 
 /*help to build the new player */
 function Entity(elemnt) {
+    this.id = elemnt;
     (this.x = parseInt(getComputedStyle(document.getElementById(elemnt)).getPropertyValue("left"))),
         (this.width = parseInt(getComputedStyle(document.getElementById(elemnt)).getPropertyValue("width"))),
         (this.y = parseInt(getComputedStyle(document.getElementById(elemnt)).getPropertyValue("bottom"))),
@@ -46,7 +47,7 @@ const checkIfTouchFloor = (entity, arr) => {
 };
 /*made the cube move (by the direction you choose) */
 const move = (entity, direction, amount = 0) => {
-    let movingEntity = document.getElementById(player,id);
+    let movingEntity = document.getElementById(player.id);
     if (direction == "right") {
         entity.x += amount;
         movingEntity.style.left = entity.x + "px";
@@ -73,12 +74,14 @@ let velocity = STARTINGVELOCITY;
 
 /*An action that causes the cube to jump in the track*/
 let isJumping = false;
+
 const caculateJump = () => {
     isJumping = true;
     move(player, "up", velocity);
     velocity += GRAVITY;
     if (checkIfTouchFloor(player, wall)) {
-        clearInterval(JumpTime);
+        console.log("jumpIntervalId: ", jumpIntervalId);
+        clearInterval(jumpIntervalId);
         velocity = STARTINGVELOCITY;
         isJumping = false;
     }
@@ -88,7 +91,7 @@ let JumpTime;
 /* chack if the object touch the floor */
 const jump = () => {
     if (checkIfTouchFloor(player, wall)) {
-        JumpTime = setInterval(() => caculateJump(), 50);
+        jumpIntervalId = setInterval(() => caculateJump(), 50);
     }
 };
 /* creat varible that get the size of the screen */

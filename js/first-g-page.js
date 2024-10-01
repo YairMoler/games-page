@@ -10,6 +10,7 @@ for (let i = 0; i < arr.length; i++) {
     /*get their divDimentions*/
     let divDimentions = el.getBoundingClientRect();
     wall[i] = {
+        id: "div" + i,
         x: divDimentions.x,
         y: 0,
         width: divDimentions.width,
@@ -21,7 +22,6 @@ playerDiv = document.createElement("div");
 playerDiv.setAttribute("id", "player");
 playerDiv.setAttribute("style", `left: 0px; bottom: ${wall[0].height}px;`);
 element.appendChild(playerDiv);
-
 
 
 
