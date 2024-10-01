@@ -43,10 +43,9 @@ const checkIfTouchFloor = (entity, arr) => {
 
         if (touchingBottom(entity, arr[item])) {
             return true;
-        } else {
-            return false;
         }
     }
+    return false;
 };
 
 const move = (entity, direction, amount = 0) => {
@@ -71,16 +70,16 @@ document.addEventListener("keydown", (event) => {
 });
 document.addEventListener("keyup", (event) => (keysPressed[event.code] = false));
 
-const GRAVITY = -9.8;
-const STARTINGVELOCITY = 44.2718872;
+const GRAVITY = -5;
+const STARTINGVELOCITY = 45;
 let velocity = STARTINGVELOCITY;
 
 let isJumping = false;
 const caculateJump = () => {
     isJumping = true;
     move(player, "up", velocity);
-    velocity += GRAVITY / 2;
-    console.log("velocity += GRAVITY / 20: ", (velocity += GRAVITY / 20));
+    velocity += GRAVITY;
+    console.log("velocity: ", velocity);
     if (checkIfTouchFloor(player, wall)) {
         clearInterval(JumpTime);
         velocity = STARTINGVELOCITY;
