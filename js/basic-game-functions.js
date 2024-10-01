@@ -7,8 +7,6 @@ function Entity(elemnt) {
 
 const player = new Entity("player");
 
-console.log(player);
-console.log(wall);
 const touchingRight = (entity1, entity2) => {
     return entity1.x + entity1.width >= entity2.x && entity1.x + entity1.width <= entity2.x + entity2.width && entity1.y < entity2.y + entity2.height;
 };
@@ -21,7 +19,6 @@ const touchingBottom = (entity1, entity2) => {
     );
 };
 
-console.log(touchingBottom(player, wall[0]));
 const checkIfTouchWalls = (entity, arr, direction) => {
     for (let item in arr) {
         if (direction == "right") {
@@ -39,8 +36,6 @@ const checkIfTouchWalls = (entity, arr, direction) => {
 
 const checkIfTouchFloor = (entity, arr) => {
     for (let item in arr) {
-        console.log("item: ", item);
-
         if (touchingBottom(entity, arr[item])) {
             return true;
         }
@@ -79,7 +74,6 @@ const caculateJump = () => {
     isJumping = true;
     move(player, "up", velocity);
     velocity += GRAVITY;
-    console.log("velocity: ", velocity);
     if (checkIfTouchFloor(player, wall)) {
         clearInterval(JumpTime);
         velocity = STARTINGVELOCITY;
@@ -95,9 +89,11 @@ const jump = () => {
     }
 };
 
+const CONTAINERWIDTH = parseInt(getComputedStyle(document.getElementsByClassName("game-floor-container")[0]).getPropertyValue("width"));
+
 const detectMovment = () => {
     if (keysPressed["ArrowRight"] == true) {
-        if (!checkIfTouchWalls(player, wall, "right")) {
+        if (!(checkIfTouchWalls(player, wall, "right") || player.x + player.width == CONTAINERWIDTH)) {
             move(player, "right", 5);
         }
     } else if (keysPressed["ArrowLeft"] == true) {
@@ -106,7 +102,6 @@ const detectMovment = () => {
         }
     }
 
-    console.log('keysPressed["ArrowUp"]: ', keysPressed["ArrowUP"]);
     if (keysPressed["ArrowUp"] == true) {
         jump();
     }
