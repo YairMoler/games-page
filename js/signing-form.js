@@ -12,9 +12,9 @@ document.getElementById("password").addEventListener("change", (event) => handle
 const handleChangePassword = (event) => {
     password = event.target.value;
 };
-
+/*add new user */
 const onSubmit = () => {
-    /*chacking if the username already log in*/
+    /*chacking if the username still not log in*/
     if (validate(username, "usernames") == -1 && validate(password, "passwords") == -1) {
         /* creat new username */
         newItem(username, "usernames");
