@@ -17,7 +17,7 @@ const handleChange = (event) => {
 // const handleChangePassword = (event) => {
 //     password = event.target.value;
 // };
-/* save the data(take it from html, paste it in the local storage) */ 
+/* save the data(take it from html, paste it in the local storage) */
 const onSubmit = () => {
     if (logIn(user.username, user.password)) {
         window.location = "./html/picture_of_games.html";

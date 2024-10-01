@@ -1,4 +1,5 @@
 function Entity(elemnt) {
+    this.id = elemnt;
     (this.x = parseInt(getComputedStyle(document.getElementById(elemnt)).getPropertyValue("left"))),
         (this.width = parseInt(getComputedStyle(document.getElementById(elemnt)).getPropertyValue("width"))),
         (this.y = parseInt(getComputedStyle(document.getElementById(elemnt)).getPropertyValue("bottom"))),
@@ -44,7 +45,7 @@ const checkIfTouchFloor = (entity, arr) => {
 };
 
 const move = (entity, direction, amount = 0) => {
-    let movingEntity = document.getElementById("player");
+    let movingEntity = document.getElementById(player.id);
     if (direction == "right") {
         entity.x += amount;
         movingEntity.style.left = entity.x + "px";
@@ -68,24 +69,24 @@ document.addEventListener("keyup", (event) => (keysPressed[event.code] = false))
 const GRAVITY = -5;
 const STARTINGVELOCITY = 45;
 let velocity = STARTINGVELOCITY;
-
+let jumpIntervalId;
 let isJumping = false;
+
 const caculateJump = () => {
     isJumping = true;
     move(player, "up", velocity);
     velocity += GRAVITY;
     if (checkIfTouchFloor(player, wall)) {
-        clearInterval(JumpTime);
+        console.log("jumpIntervalId: ", jumpIntervalId);
+        clearInterval(jumpIntervalId);
         velocity = STARTINGVELOCITY;
         isJumping = false;
     }
 };
 
-let JumpTime;
-
 const jump = () => {
     if (checkIfTouchFloor(player, wall)) {
-        JumpTime = setInterval(() => caculateJump(), 50);
+        jumpIntervalId = setInterval(() => caculateJump(), 50);
     }
 };
 
@@ -102,7 +103,7 @@ const detectMovment = () => {
         }
     }
 
-    if (keysPressed["ArrowUp"] == true) {
+    if (keysPressed["ArrowUp"] == true && isJumping == false) {
         jump();
     }
 };

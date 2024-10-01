@@ -9,6 +9,7 @@ for (let i = 0; i < arr.length; i++) {
     element.appendChild(el);
     let divDimentions = el.getBoundingClientRect();
     wall[i] = {
+        id: "div" + i,
         x: divDimentions.x,
         y: 0,
         width: divDimentions.width,
@@ -21,9 +22,8 @@ playerDiv.setAttribute("id", "player");
 playerDiv.setAttribute("style", `left: 0px; bottom: ${wall[0].height}px;`);
 element.appendChild(playerDiv);
 
-
 /* <body onload="startGame()">
-*/
+ */
 /*var myGamePiece;
 var myObstacles = [];
 var mySound;
@@ -36,26 +36,3 @@ function startGame() {
   myMusic.play();
   myGameArea.start();
 }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
