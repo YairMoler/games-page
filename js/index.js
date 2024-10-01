@@ -9,14 +9,9 @@ document.getElementById("username").addEventListener("change", (event) => handle
 document.getElementById("password").addEventListener("change", (event) => handleChange(event));
 
 const handleChange = (event) => {
-    console.log("event.target.id: ", event.target.id);
     user[event.target.id] = event.target.value;
-    console.log("username: ", user[event.target.id]);
 };
 
-// const handleChangePassword = (event) => {
-//     password = event.target.value;
-// };
 /* save the data(take it from html, paste it in the local storage) */ 
 const onSubmit = () => {
     if (logIn(user.username, user.password)) {
