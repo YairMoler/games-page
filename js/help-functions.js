@@ -1,3 +1,5 @@
+
+
 const logIn = (username, password) => {
     if (validate(username, "usernames") == validate(password, "passwords") && validate(username, "usernames") != -1) {
         return true;
@@ -5,7 +7,6 @@ const logIn = (username, password) => {
         return false;
     }
 };
-
 
 const validate = (str, storage) => {
     let retrieved = localStorage.getItem(storage);

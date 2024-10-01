@@ -3,7 +3,7 @@
   padding: 0;
   margin: 0;
 }
-
+/*build the shape of the page*/
 main {
   border:7px rgb(97, 177, 199) solid;
   display: flex;

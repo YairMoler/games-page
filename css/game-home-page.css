@@ -11,7 +11,7 @@ img{
     border-radius: 45px;
 
 }
-
+/*  while you touching the image */
 img:hover{
     opacity:0.6 ;
 }
