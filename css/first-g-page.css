@@ -70,3 +70,22 @@ body::-webkit-scrollbar{
     border-radius: 50%;
     position: absolute;
 }
+
+
+#cloud-container{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 0;
+    top: 200px;
+    justify-content: space-around;
+    width: 100%; 
+}
+
+.cloud{
+    z-index: 4;
+    background-color: white;
+    width: 200px;
+    height: 40px;
+    margin: 100px, 200px;
+}
