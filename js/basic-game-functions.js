@@ -80,7 +80,6 @@ const caculateJump = () => {
     move(player, "up", velocity);
     velocity += GRAVITY;
     if (checkIfTouchFloor(player, wall)) {
-        console.log("jumpIntervalId: ", jumpIntervalId);
         clearInterval(jumpIntervalId);
         velocity = STARTINGVELOCITY;
         isJumping = false;

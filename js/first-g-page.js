@@ -7,7 +7,7 @@ for (let i = 0; i < arr.length; i++) {
     el.classList.add(`div${arr[i]}`, `general1`);
     el.setAttribute("id", "div" + i);
     element.appendChild(el);
-    /*get their divDimentions*/
+    /*get the dimentions of the cube by calculated it*/
     let divDimentions = el.getBoundingClientRect();
     wall[i] = {
         id: "div" + i,

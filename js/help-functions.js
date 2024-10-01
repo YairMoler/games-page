@@ -12,7 +12,6 @@ const logIn = (username, password) => {
 /* in order to creat them, they cannot exist */
 const validate = (str, storage) => {
     let retrieved = localStorage.getItem(storage);
-    console.log(retrieved);
     retrieved = JSON.parse(retrieved);
     return retrieved.indexOf(str);
 };
@@ -23,6 +22,5 @@ const newItem = (str, storage) => {
     retrieved = JSON.parse(retrieved);
     retrieved.push(str);
     let intoStorage = JSON.stringify(retrieved);
-    // console.log("key: " , storage, " value: " , intoStorage)
     localStorage.setItem(storage, intoStorage);
 }
