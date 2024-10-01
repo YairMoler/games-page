@@ -73,20 +73,34 @@ body::-webkit-scrollbar{
 }
 
 
-#cloud-container{
+
+#cloud-container1{
     display: flex;
     flex-wrap: wrap;
     position: absolute;
     left: 0;
-    top: 200px;
+    top: 100px;
+    justify-content: space-between;
+    width: 100%; 
+}
+
+
+#cloud-container2{
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 0;
+    top: 280px;
     justify-content: space-around;
     width: 100%; 
 }
 
 .cloud{
     z-index: 4;
-    background-color: white;
+    height:  200px;
     width: 200px;
-    height: 40px;
-    margin: 100px, 200px;
+}
+
+img{
+    width: 100%;
 }
